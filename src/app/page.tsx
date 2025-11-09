@@ -7,21 +7,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredAdvocates, setFilteredAdvocates] = useState([]);
 
-  useEffect(() => {
-    console.log("fetching advocates...");
-    fetch("/api/advocates").then((response) => {
-      response.json().then((jsonResponse) => {
-        setAdvocates(jsonResponse.data);
-        setFilteredAdvocates(jsonResponse.data);
-      });
-    });
-  }, []);
-
-  const onChange = (e) => {
-    const searchTerm = e.target.value;
-
-    document.getElementById("search-term").innerHTML = searchTerm;
-
+  const fetchAdvocates = (searchTerm) => {
     console.log("filtering advocates...");
     const filteredAdvocates = advocates.filter((advocate) => {
       return (
@@ -34,8 +20,23 @@ export default function Home() {
         String(advocate.phoneNumber).includes(searchTerm)
       );
     });
+    return filteredAdvocates;
+  };
+  
+  useEffect(() => {
+    console.log("fetching advocates...");
+    fetch("/api/advocates").then((response) => {
+      response.json().then((jsonResponse) => {
+        setAdvocates(jsonResponse.data);
+        setFilteredAdvocates(jsonResponse.data);
+      });
+    });
+  }, []);
 
-    setFilteredAdvocates(filteredAdvocates);
+
+  const onChange = (e) => {
+    setSearchTerm(e.target.value);
+    setFilteredAdvocates(fetchAdvocates(searchTerm));
   };
 
   const onClick = () => {
