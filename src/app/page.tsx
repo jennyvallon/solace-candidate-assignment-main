@@ -29,7 +29,8 @@ export default function Home() {
         advocate.city.includes(searchTerm) ||
         advocate.degree.includes(searchTerm) ||
         advocate.specialties.some((specialty) => specialty.includes(searchTerm)) ||
-        String(advocate.yearsOfExperience).includes(searchTerm)
+        String(advocate.yearsOfExperience).includes(searchTerm) ||
+        String(advocate.phoneNumber).includes(searchTerm)
       );
     });
 
