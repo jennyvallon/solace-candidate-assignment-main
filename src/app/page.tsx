@@ -23,13 +23,13 @@ export default function Home() {
     console.log("filtering advocates...");
     const filteredAdvocates: Advocates = advocates.filter((advocate: Advocate) => {
       return (
-        advocate.firstName.includes(searchTerm) ||
-        advocate.lastName.includes(searchTerm) ||
-        advocate.city.includes(searchTerm) ||
-        advocate.degree.includes(searchTerm) ||
-        advocate.specialties.some((specialty) => specialty.includes(searchTerm)) ||
-        String(advocate.yearsOfExperience).includes(searchTerm) ||
-        String(advocate.phoneNumber).includes(searchTerm)
+        advocate.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        advocate.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        advocate.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        advocate.degree.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        advocate.specialties.some((specialty) => specialty.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        String(advocate.yearsOfExperience).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(advocate.phoneNumber).toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
     return filteredAdvocates;
