@@ -57,7 +57,9 @@ export default function Home() {
 
   const onClick = () => {
     console.log(advocates);
+    setSearchTerm("");
     setFilteredAdvocates(advocates);
+    setNoResults(false);
   };
 
   return (
