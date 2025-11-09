@@ -18,7 +18,7 @@ export default function Home() {
   const [advocates, setAdvocates] = useState<Advocates>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocates>([]);
-
+  const [noResults, setNoResults] = useState(false);
   const fetchAdvocates = (searchTerm: string) => {
     console.log("filtering advocates...");
     const filteredAdvocates: Advocates = advocates.filter((advocate: Advocate) => {
@@ -32,6 +32,9 @@ export default function Home() {
         String(advocate.phoneNumber).toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
+    if (filteredAdvocates.length === 0) {
+      setNoResults(true);
+    }
     return filteredAdvocates;
   };
   
@@ -104,6 +107,10 @@ export default function Home() {
           })}
         </tbody>
       </table>
+      {noResults && <p>
+            Your search did not match any advocates.<br />
+            Need help? Check out our <a href="https://www.solace.com/help">other tips</a> for searching on Solace
+          </p>}
     </main>
   );
 }
