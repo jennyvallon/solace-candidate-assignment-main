@@ -47,8 +47,9 @@ export default function Home() {
 
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-    setFilteredAdvocates(fetchAdvocates(searchTerm));
+    const value = e.target.value;
+    setSearchTerm(value);
+    setFilteredAdvocates(fetchAdvocates(value));
   };
 
   const onClick = () => {
