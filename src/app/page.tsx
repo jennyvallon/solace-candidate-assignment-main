@@ -32,9 +32,7 @@ export default function Home() {
         String(advocate.phoneNumber).toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
-    if (filteredAdvocates.length === 0) {
-      setNoResults(true);
-    }
+    setNoResults(filteredAdvocates.length === 0);
     return filteredAdvocates;
   };
   
@@ -77,19 +75,20 @@ export default function Home() {
       </div>
       <br />
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>City</th>
-            <th>Degree</th>
-            <th>Specialties</th>
-            <th>Years of Experience</th>
-            <th>Phone Number</th>
-          </tr>
-        </thead>
-        <tbody>
+        <table>
+   {!noResults && <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>City</th>
+              <th>Degree</th>
+              <th>Specialties</th>
+              <th>Years of Experience</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>}
+          <tbody>
+
           {filteredAdvocates.map((advocate, i) => {
             return (
               <tr key={i}>
@@ -109,7 +108,9 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      {noResults && <p>
+      {noResults && (
+        <p style={{ textAlign: "center", width: "100%" }}>
+          <em>
             Your search did not match any advocates.<br />
             Need help? Check out our <a href="https://www.solace.com/help">other tips</a> for searching on Solace
           </p>}
