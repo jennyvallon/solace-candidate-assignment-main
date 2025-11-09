@@ -112,8 +112,10 @@ export default function Home() {
         <p style={{ textAlign: "center", width: "100%" }}>
           <em>
             Your search did not match any advocates.<br />
-            Need help? Check out our <a href="https://www.solace.com/help">other tips</a> for searching on Solace
-          </p>}
+            Need help? Check out our <a style={{ color: "blue" }} href="https://www.solace.com/help">other tips</a> for searching on Solace
+          </em>
+        </p>
+      )}
     </main>
   );
 }
