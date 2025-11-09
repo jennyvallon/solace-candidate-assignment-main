@@ -2,14 +2,26 @@
 
 import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [advocates, setAdvocates] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredAdvocates, setFilteredAdvocates] = useState([]);
+  type Advocate = {
+    firstName: string;
+    lastName: string;
+    city: string;
+    degree: string;
+    specialties: string[];
+    yearsOfExperience: number;
+    phoneNumber: number;
+  };
 
-  const fetchAdvocates = (searchTerm) => {
+  type Advocates = Advocate[];
+
+export default function Home() {
+  const [advocates, setAdvocates] = useState<Advocates>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredAdvocates, setFilteredAdvocates] = useState<Advocates>([]);
+
+  const fetchAdvocates = (searchTerm: string) => {
     console.log("filtering advocates...");
-    const filteredAdvocates = advocates.filter((advocate) => {
+    const filteredAdvocates: Advocates = advocates.filter((advocate: Advocate) => {
       return (
         advocate.firstName.includes(searchTerm) ||
         advocate.lastName.includes(searchTerm) ||
@@ -34,7 +46,7 @@ export default function Home() {
   }, []);
 
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setFilteredAdvocates(fetchAdvocates(searchTerm));
   };
