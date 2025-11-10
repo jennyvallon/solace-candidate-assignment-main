@@ -70,6 +70,8 @@ export default function Home() {
         <label htmlFor="search-input">
           Searching for: <output id="search-term">{searchTerm}</output>
         </label>
+        <br />
+        <br />
         <input style={{ border: "1px solid black" }} onChange={onChange} />
         <button onClick={onClick}>Reset Search</button>
       </div>
