@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       <br />
       <br />
-        <table>
+        <table style={{ tableLayout: "fixed", width: "100%" }}>
    {!noResults && <thead>
             <tr>
               <th>First Name</th>
