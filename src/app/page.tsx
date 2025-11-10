@@ -22,11 +22,11 @@ const Td = (props: React.HTMLAttributes<HTMLTableCellElement>) => (
   <td style={{ textAlign: "center" }} {...props} />
 );
 
-const Tr = (props: React.HTMLAttributes<HTMLTableRowElement>) => (
+const Tr = (props: React.HTMLAttributes<HTMLTableRowElement> & { "data-row-index"?: number }) => (
   <tr
     style={{
       marginBottom: "50px",
-      backgroundColor: (props["data-row-index"] ?? 0) % 2 === 1 ? "#333333" : undefined, // Tailwind's green-200 hex
+      backgroundColor: (props["data-row-index"] ?? 0) % 2 === 1 ? "#333333" : undefined,
     }}
     {...props}
   />
