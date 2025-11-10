@@ -41,6 +41,7 @@ export default function Home() {
     console.log("filtering advocates...");
     const filteredAdvocates: Advocates = advocates.filter((advocate: Advocate) => {
       return (
+        (`${advocate.firstName} ${advocate.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())) ||
         advocate.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         advocate.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         advocate.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
